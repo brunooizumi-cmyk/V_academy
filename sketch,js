@@ -1,0 +1,88 @@
+let mostrandoA_Frente = true;
+
+function setup() {
+  // Cria a tela de desenho interativa (360 de largura por 450 de altura)
+  createCanvas(360, 450);
+}
+
+function draw() {
+  // Fundo do painel
+  background(26, 31, 36);
+  
+  // --- 1. CABEÇALHO ---
+  fill(255, 70, 85); // Vermelho Valorant
+  noStroke();
+  rect(0, 0, 360, 60);
+  
+  fill(255);
+  textAlign(CENTER, CENTER);
+  textFont('Courier New'); // Fonte estilo hacker/game
+  textSize(20);
+  text("VALORANT ACADEMY", 180, 30);
+  
+  // --- 2. CONFIGURAÇÃO DO CARD (260x200px igual à aula) ---
+  let cardX = 50;
+  let cardY = 110;
+  let cardLARGURA = 260;
+  let cardALTURA = 200;
+  
+  // Corpo do cartão (Fundo cinza escuro)
+  fill(17, 17, 22);
+  stroke(51);
+  strokeWeight(2);
+  rect(cardX, cardY, cardLARGURA, cardALTURA, 12); // Bordas arredondadas
+  
+  // --- 3. LÓGICA DE VIRAR O CARD ---
+  if (mostrandoA_Frente) {
+    // FRENTE DO CARD (Pergunta)
+    // Mini bloco colorido simulando a foto da habilidade
+    fill(255, 70, 85, 40); 
+    rect(cardX + 15, cardY + 15, cardLARGURA - 30, 100, 6);
+    
+    // Ícone decorativo no centro do bloco
+    fill(255, 70, 85);
+    textSize(28);
+    text("?", 180, 175);
+    
+    // Texto da Pergunta
+    fill(255);
+    noStroke();
+    textSize(13);
+    text("Qual Agente usa a habilidade\n'Passos Das Sombras'?", 180, 275);
+    
+  } else {
+    // VERSO DO CARD (Resposta)
+    // Mini bloco roxo simulando a foto do Omen
+    fill(114, 71, 184, 40); 
+    rect(cardX + 15, cardY + 15, cardLARGURA - 30, 100, 6);
+    
+    // Ícone decorativo do verso
+    fill(114, 71, 184);
+    textSize(24);
+    text("👁", 180, 175);
+    
+    // Texto da Resposta
+    fill(255);
+    noStroke();
+    textSize(16);
+    text("Agente: OMEN", 180, 265);
+    
+    fill(255, 70, 85);
+    textSize(12);
+    text("Função: Controlador", 180, 285);
+  }
+  
+  // --- 4. RODAPÉ DE INSTRUÇÃO ---
+  fill(130);
+  noStroke();
+  textSize(11);
+  text("CLIQUE EM QUALQUER LUGAR PARA VIRAR", 180, 390);
+}
+
+// Função que vira o cartão ao clicar com o mouse
+function mousePressed() {
+  // Se o clique for dentro da tela do jogo, inverte o lado do cartão
+  if (mouseX >= 0 && mouseX <= width && mouseY >= 0 && mouseY <= height) {
+    mostrandoA_Frente = !mostrandoA_Frente;
+  }
+}
