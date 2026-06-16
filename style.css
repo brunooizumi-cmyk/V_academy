@@ -1,0 +1,18 @@
+/* Limpa as margens padrão do navegador */
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #111116; /* Fundo escuro estilo Valorant */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Garante que a tela de desenho do p5.js fique centralizada */
+canvas {
+  display: block;
+  border: 2px solid #ff4655; /* Borda vermelha ao redor do jogo */
+  border-radius: 8px;
+}
